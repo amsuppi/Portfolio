@@ -2,24 +2,35 @@ import React, { useState, useEffect } from 'react';
 import { Card, Button } from 'react-bootstrap';
 
 const CardInfo = ()=>{
-    const key = 'KW52Zf3-K8qe_dy38upD-vzHmG9Q48SPA-VAsR5mssOj_L3YV743w4DaiQncWLozm0oENn6NE6ddJGtCobZBGQV7KUyzdLmWzeufz6wNksIDaDUwOuNPrth16bHXYHYx'
+    const key = '3spc-3F32L8ntwDk92OnR5RaibXGi6LYUeVTplI3SUB5PP_m9iQ5Jt9HEVezgoMdOSpylrGhE6evLERC9FBq8I78AlpZTjJcNMc3adQDVLpyp9CZY6Zi1WCh1eM7X3Yx'
     const clientId = 'gNTopG23qqjd5TYA1xDUUQ'
 
     const [data, setData] = useState({});
 
-    useEffect(()=>{
-        fetch("https://api.yelp.com/v3/businesses/north-india-restaurant-san-francisco", {
+        useEffect( () => {
+            const laFuncion = async()=>{ var myHeaders = new Headers();
+            myHeaders.append("Access-Control-Allow-Origin", "http://localhost:3000");
+            myHeaders.append("Authorization", `Bearer ${key}`);
+            myHeaders.append("Content-Type", "application/json");
+            
+
+            var requestOptions = {
             method: 'GET',
-            mode: 'no-cors',
-            headers:{
-                'Authorization': `Bearer${key}`,
-                'Content-Type': 'application/json'
-            }
-          }).then(res => res.json())
-          .catch(error => console.error('Error:', error))
-          .then(response => console.log('Success:', response));
-    }
-    )
+            headers: myHeaders,
+            redirect: 'follow'
+            };
+
+            await fetch("https://api.yelp.com/v3/businesses/north-india-restaurant-san-francisco", requestOptions)
+            .then(response => response.json())
+            .then(result => setData(result.data))
+            .catch(error => console.log('error', error));
+         
+        }
+        laFuncion();
+            
+          });
+
+    
     return(
         <Card style={{ width: '18rem' }}>
             <Card.Img variant="top" src="holder.js/100px180" />
