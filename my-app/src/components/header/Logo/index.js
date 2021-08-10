@@ -1,5 +1,5 @@
 import React from 'react';
-import yelpIcon from '../../../assets/yelpIcon.png'
+import yelpIcon from '../../../assets/pokemon.png'
 
 const Logo = ()=>{
     return(
