@@ -3,17 +3,26 @@ import { Card, Button } from 'react-bootstrap';
 
 const CardInfo = () => {
     const [data, setData] = useState([]);
+    const [pokemon, setPokemon] = useState({});
 
     async function laFuncion() {
         const requestOptions = {
             method: 'GET',
-            redirect: 'follow'
           };
-          
-          await fetch("https://pokeapi.co/api/v2/ability/?limit=20&offset=20", requestOptions)
+
+             fetch(`https://pokeapi.co/api/v2/pokemon/`, requestOptions)
             .then(response => response.json())
-            .then(result => setData(result.results))
+            .then((result) => {
+                setData(result.results)
+                data.map(item => {
+                    fetch(item.url)
+                    .then(response => response.json())
+                    .then(res => console.log(res));
+                })
+            })
             .catch(error => console.log('error', error));
+          
+          
     }
 
     useEffect(() => {
@@ -22,21 +31,15 @@ const CardInfo = () => {
 
 
     return (
-        <div>
-        {data.map(item => (
-            <Card>
-                <Card.Img variant="top" src="holder.js/100px180" />
-                <Card.Body>
-                    <Card.Title>{item.name}</Card.Title>
-                    <Card.Text>
-                    Some quick example text to build on the card title and make up the bulk of
-                    the card's content.
-                    </Card.Text>
-                    <Button variant="primary">Go somewhere</Button>
-                </Card.Body>
+        <>
+            <Card  key="name">
+            <Card.Img variant="top" />
+            <Card.Body>
+                <Card.Title></Card.Title>
+                <Button variant="primary">Go somewhere</Button>
+            </Card.Body>
             </Card>
-          ))}
-        </div>
+        </>
       
     )
 }
