@@ -9,9 +9,7 @@ const SearchBar = ({ setInfo }) => {
         e.preventDefault();
         console.log(value)
 
-        value.length > 2 ? setInfo(value) : setInfo("Pokemon")
-        
-        
+        value.length > 2 ? setInfo(value) : setInfo("Pokemon");  
     }
 
     return (
@@ -26,8 +24,6 @@ const SearchBar = ({ setInfo }) => {
             <Form.Control type="submit"/>
         </Form.Group>
     </Form>
-    
-    <PokemonCard setValue={setValue}/>
     </>
     )
 }

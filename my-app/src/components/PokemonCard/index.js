@@ -1,25 +1,17 @@
 import React, {useState, useEffect} from 'react'
 import { Card, Button } from 'react-bootstrap'
+import { getInfo } from '../../Helpers/getInfo'
+import { useFetchPoke } from '../../hooks/useFetchPoke'
 
 const PokemonCard = ({ info })=>{
-    const [pokemon, setPokemon] = useState("")
-
-    async function getInfo(){
-        const url = `https://pokeapi.co/api/v2/pokemon/butterfree/`;
-        const resp = await fetch(url);
-        const data = await resp.json();
-
-        setPokemon(data)
-    }
-
-    useEffect(()=> {
-        getInfo();  
-    }, [])
+    console.log(info)
+    const {data, loading } = useFetchPoke( info );
 
     return (
         <div>
-         <img src={pokemon.sprites?.back_female}/>
-         <h2>{pokemon.name}</h2>
+            {/* {loading ? 'cargando' : "Listo"} */}
+         <img src={data.sprites?.back_female}/>
+         <h2>{data.name}</h2>
         </div>
     )
  

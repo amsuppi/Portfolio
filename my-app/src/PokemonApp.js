@@ -3,7 +3,7 @@ import SearchBar from "./components/SearchBar";
 import PokemonCard from "./components/PokemonCard";
 
 const PokemonApp = ()=>{
-    const [info, setInfo] = useState('');
+    const [info, setInfo] = useState('butterfree');
 
     return(
         <>
