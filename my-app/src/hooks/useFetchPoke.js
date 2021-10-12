@@ -11,6 +11,7 @@ export const useFetchPoke = ( info )=>{
         getInfo(info).then(
             poke => 
             setTimeout(()=>{
+                console.log(poke)
                 setState({
                     data:[poke],
                     loading: false

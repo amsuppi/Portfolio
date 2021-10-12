@@ -5,13 +5,21 @@ import { useFetchPoke } from '../../hooks/useFetchPoke'
 
 const PokemonCard = ({ info })=>{
     console.log(info)
-    const {data, loading } = useFetchPoke( info );
+    const {data:pokemon, loading } = useFetchPoke( info );
+
+    console.log(pokemon)
 
     return (
         <div>
-            {/* {loading ? 'cargando' : "Listo"} */}
-         <img src={data.sprites?.back_female}/>
-         <h2>{data.name}</h2>
+            {loading && <h6>Loading...</h6>}
+
+            {
+                pokemon.map(img => (
+                    <img key={img.name} src={img.sprites?.front_default}/>
+                ))
+            }
+         
+         <h2>{info}</h2>
         </div>
     )
  
