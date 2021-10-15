@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import { Button, Form } from 'react-bootstrap';
 import PokemonCard from '../PokemonCard';
+import './styles.scss';
 
 const SearchBar = ({ setInfo }) => {
     const [value, setValue] = useState('');
@@ -9,12 +10,14 @@ const SearchBar = ({ setInfo }) => {
         e.preventDefault();
         console.log(value)
 
-        value.length > 2 ? setInfo(value) : setInfo("Pokemon");  
+        value.length > 2 ? setInfo(value) : setInfo("Pokemon"); 
+        
+        // localStorage.setItem('pokemon', {...key});
     }
 
     return (
         <>
-    <Form onSubmit={ handlerClick } >
+    <Form className="search-form" onSubmit={ handlerClick } >
         <Form.Group className="mb-3" controlId="formBasicEmail">
             <Form.Control 
                 type="text" 

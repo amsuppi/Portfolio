@@ -1,11 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import PokemonApp from './PokemonApp';
+import './styles.scss'
+import App from './App';
 
 ReactDOM.render(
   <React.StrictMode>
-    <PokemonApp />
+    <App />
   </React.StrictMode>,
   document.getElementById('root')
 );

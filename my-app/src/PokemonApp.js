@@ -6,10 +6,11 @@ const PokemonApp = ()=>{
     const [info, setInfo] = useState('butterfree');
 
     return(
-        <>
+        <div className="container">
+            <h1>Search Your Pokemon</h1>
             <SearchBar setInfo = {setInfo}/>
             <PokemonCard info={info}/>
-        </>
+        </div>
     )
 }
 

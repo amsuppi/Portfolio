@@ -2,13 +2,13 @@ import React, {useState, useEffect} from 'react'
 import { Card, Button } from 'react-bootstrap'
 import { getInfo } from '../../Helpers/getInfo'
 import { useFetchPoke } from '../../hooks/useFetchPoke'
+import useUpladStorage from '../../hooks/useUploadStorage'
 
 const PokemonCard = ({ info })=>{
-    console.log(info)
+    console.log("infooo", info)
     const {data:pokemon, loading } = useFetchPoke( info );
-
-    console.log(pokemon)
-
+    useUpladStorage(info)
+    
     return (
         <div>
             {loading && <h6>Loading...</h6>}
