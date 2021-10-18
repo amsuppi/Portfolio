@@ -3,10 +3,17 @@ import { getInfo } from "../Helpers/getInfo";
 
 
 const useUpladStorage = (info)=>{
+    const strData = localStorage.getItem('pokemon');
+    const objData = JSON.parse(strData);
+
+    const [newArray, setNewArray] = useState([objData]);
+    
+
     const [key, setKey] = useState({
         nombre: "",
         imgUrl: ""
     });
+
     useEffect(()=>{
         getInfo(info).then(
             poke =>{
@@ -19,8 +26,12 @@ const useUpladStorage = (info)=>{
     }, [info])
 
     console.log(key)
+    useEffect(()=>{
+        setNewArray(arr => [...arr, key])
+    }, [info])
 
-    localStorage.setItem('pokemon', JSON.stringify(key));
+    console.log(newArray)
+    localStorage.setItem('pokemon', JSON.stringify(newArray));
 
     return key
 

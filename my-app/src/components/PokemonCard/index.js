@@ -6,9 +6,10 @@ import useUpladStorage from '../../hooks/useUploadStorage'
 
 const PokemonCard = ({ info })=>{
     console.log("infooo", info)
+
     const {data:pokemon, loading } = useFetchPoke( info );
     useUpladStorage(info)
-    
+
     return (
         <div>
             {loading && <h6>Loading...</h6>}
