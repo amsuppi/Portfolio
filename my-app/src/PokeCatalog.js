@@ -1,7 +1,7 @@
 import React from "react";
-import LocalStorageCard from "./components/LocalStorageCard";
+import Catalog from "./components/Catalog";
 
-const PokeHistory = ({img, texto})=>{
+const PokeCatalog = ({img, texto})=>{
 
     //Subir la url de la imagen y el titulo al local host
     //traerlo y añadirlo en la carta
@@ -9,10 +9,10 @@ const PokeHistory = ({img, texto})=>{
 
     return (
         <>
-        <h2> Poke history</h2>
-        <LocalStorageCard />
+        <h2> Poke Catalog</h2>
+        <Catalog />
         </>
     )
 }
 
-export default PokeHistory;
+export default PokeCatalog;

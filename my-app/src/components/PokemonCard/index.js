@@ -8,7 +8,6 @@ const PokemonCard = ({ info })=>{
     console.log("infooo", info)
 
     const {data:pokemon, loading } = useFetchPoke( info );
-    useUpladStorage(info)
 
     return (
         <div>
