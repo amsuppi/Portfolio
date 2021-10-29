@@ -4,18 +4,18 @@ import { getInfo } from '../../Helpers/getInfo'
 import { useFetchPoke } from '../../hooks/useFetchPoke'
 import useUpladStorage from '../../hooks/useUploadStorage'
 
-const PokemonCard = ({ info })=>{
-    console.log("infooo", info)
+const PokemonCard = ({ info, load })=>{
+    console.log("infooo", load)
 
-    const {data:pokemon, loading } = useFetchPoke( info );
+    const {data:pokemon, loading } = useFetchPoke( info, load );
 
     return (
         <div>
             {loading && <h6>Loading...</h6>}
 
             {
-                pokemon.map(img => (
-                    <img key={img.name} src={img.sprites?.front_default}/>
+                pokemon?.map(img => (
+                    <img key={img?.name} src={img?.sprites?.front_default}/>
                 ))
             }
          

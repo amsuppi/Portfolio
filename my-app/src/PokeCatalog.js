@@ -8,10 +8,10 @@ const PokeCatalog = ({img, texto})=>{
     //se tiene que ir creando una carta cada vez que se suba una nueva
 
     return (
-        <>
+        <div className="catalog">
         <h2> Poke Catalog</h2>
-        <Catalog />
-        </>
+        <Catalog/>
+        </div>
     )
 }
 

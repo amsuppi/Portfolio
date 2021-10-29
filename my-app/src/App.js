@@ -7,14 +7,20 @@ import {
   } from "react-router-dom";
 import PokeCatalog from "./PokeCatalog";
 import PokemonApp from "./PokemonApp";
+import Pokeball from "./img/pokeball.png";
 
 const App = ()=>{
      return(
             <Router>
-              <div>
-                  <Link to="/">Home</Link>
+              <div >
+                <div className="header">
+                  <Link  to="/">
+                    <img  
+                     src={Pokeball}
+                     width = "40"/>
+                    </Link>
                   <Link to="/catalog">Poke catalog</Link>
-                <hr />
+                  </div>
                 <Switch>
                   <Route exact path="/">
                     <PokemonApp />

@@ -3,16 +3,22 @@ import { Button, Form } from 'react-bootstrap';
 import PokemonCard from '../PokemonCard';
 import './styles.scss';
 
-const SearchBar = ({ setInfo }) => {
+const SearchBar = ({ setInfo, setLoad }) => {
     const [value, setValue] = useState('');
 
     const handlerClick = (e) => {
+        let load = true;
         e.preventDefault();
         console.log(value)
 
-        value.length > 2 ? setInfo(value) : setInfo("Pokemon"); 
+        if(value.length > 2 ){
+            setInfo(value) 
+            setLoad(load) 
+        }else{
+            setInfo("Pokemon")
+        }
+
         
-        // localStorage.setItem('pokemon', {...key});
     }
 
     return (
