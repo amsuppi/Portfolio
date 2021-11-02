@@ -21,7 +21,7 @@ export const useFetchPoke = ( info, load )=>{
                     data:[poke],
                     loading: false
                 })
-            }, 3000)
+            }, 1200)
         )
     }, [info])
     
