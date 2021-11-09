@@ -3,8 +3,8 @@ import SearchBar from "./components/SearchBar";
 import PokemonCard from "./components/PokemonCard";
 
 const PokemonApp = ()=>{
-    const [info, setInfo] = useState('butterfree');
-    const [load, setLoad] = useState(false)
+    const [info, setInfo] = useState<string>('butterfree');
+    const [load, setLoad] = useState<boolean>(false);
 
     return(
         <div className="container">
@@ -13,6 +13,8 @@ const PokemonApp = ()=>{
             <PokemonCard info={info} load={load}/>
         </div>
     )
+
 }
+
 
 export default PokemonApp;
