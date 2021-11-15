@@ -2,30 +2,37 @@ import React, {useState, useEffect} from 'react'
 import { useFetchPoke } from '../../hooks/useFetchPoke'
 
 interface GetElementsNecesary {
-    info: String;
-    load: Boolean;
+    info: string;
+    load: boolean;
 }
 
 const PokemonCard: React.FC <GetElementsNecesary> = ({ info, load })=>{
-    console.log("infooo", load)
+   
 
-    const {data:pokemon, loading } = useFetchPoke(info, load);
+    const data = {
+        info: info,
+        load: load
+    }
+
+    console.log("infooo", data)
+
+    const {data:pokemon, loading } = useFetchPoke(data);
     console.log("Pokeekke", pokemon)
     console.log("loading", loading )
 
-    // pokemon?.map((img, id):any => (
-    //     console.log(img?.name)
-    // ))
+    pokemon?.map((img:any, id) => (
+        console.log(img.name)
+    ))
 
     return (
         <div>
             {loading && <h6>Loading...</h6>}
 
-            {/* {
-                pokemon?.map(img => (
-                    <img key={img?.name} src={img?.sprites?.front_default}/>
+            {
+                pokemon?.map((img:any, id) => (
+                    <img key={id} src={img?.sprites?.front_default}/>
                 ))
-            } */}
+            }
          
          <h2>{info}</h2>
         </div>

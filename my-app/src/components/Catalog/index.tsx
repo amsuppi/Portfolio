@@ -5,15 +5,21 @@ import './styles.scss';
 
 const Catalog:React.FC = ()=>{
     const {stateIncrement, stateDecrement, state, load} = useCounter();
-    const {data:pokemon, loading} = useFetchPoke(state, load)
 
-    // const imgList = pokemon.map(img => (
-    //     <img key={state} src={img.sprites?.front_default}/>
-    // ))
+    const data = {
+        info: state,
+        load: load
+    }
+    console.log("dataa", data)
+    const {data:pokemon, loading} = useFetchPoke(data)
+
+    const imgList = pokemon.map((img:any) => (
+        <img key={state} src={img.sprites?.front_default}/>
+    ))
     
-    // const nameList = pokemon.map(name => (
-    //     <h2 key = {state}>{name.name}</h2>
-    // ))
+    const nameList = pokemon.map((name:any) => (
+        <h2 key = {state}>{name.name}</h2>
+    ))
 
     console.log(pokemon, loading)
     
@@ -26,8 +32,8 @@ const Catalog:React.FC = ()=>{
 
 
         <div className="pokeCard">
-            {/* {imgList}
-            {nameList} */}
+            {imgList}
+            {nameList}
         </div>
         <button onClick={stateIncrement}>{'>'}</button>
         </div>
