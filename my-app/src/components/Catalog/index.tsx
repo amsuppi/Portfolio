@@ -3,16 +3,21 @@ import useCounter from "../../hooks/useCounter";
 import { useFetchPoke } from "../../hooks/useFetchPoke";
 import './styles.scss';
 
-const Catalog = ()=>{
+const Catalog:React.FC = ()=>{
     const {stateIncrement, stateDecrement, state, load} = useCounter();
-    const {data:pokemon, loading} = useFetchPoke(state, load)
-    console.log("load", load)
 
-    const imgList = pokemon.map(img => (
+    const data = {
+        info: state,
+        load: load
+    }
+    console.log("dataa", data)
+    const {data:pokemon, loading} = useFetchPoke(data)
+
+    const imgList = pokemon.map((img:any) => (
         <img key={state} src={img.sprites?.front_default}/>
     ))
     
-    const nameList = pokemon.map(name => (
+    const nameList = pokemon.map((name:any) => (
         <h2 key = {state}>{name.name}</h2>
     ))
 
